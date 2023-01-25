@@ -1,7 +1,6 @@
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 from config import TOKEN_API
-from random import random
 
 HELP_COMMAND = """Привет, эсперантист! Я бот-преподаватель языка <strong>Эсперанто</strong>. Я помогу тебе выучить этот прекрасный язык, расскажу много интересного и полезного об Эсперанто. Ознакомься с моими командами ниже:
 
@@ -29,22 +28,17 @@ chat_button = InlineKeyboardButton(text='Чат эсперантистов в Te
 ikb_links.add(dictionary_button, chat_button)
 
 
-@dp.message_handler(commands=['help'])
-async def help(message: types.Message):
-    await message.answer(text=HELP_COMMAND, parse_mode='HTML', reply_markup=kb)
-
-
-@dp.message_handler(commands=['start'])
-async def start(message: types.Message):
+@dp.message_handler(commands=['start', 'help'])
+async def start_command(message: types.Message):
     await message.answer(text=HELP_COMMAND, parse_mode='HTML', reply_markup=kb)
 
 @dp.message_handler(commands=['contact'])
-async def contact(message: types.Message):
+async def contact_command(message: types.Message):
     await message.answer(text='Пиши мне про баги и слова благодарности 🥳',
                          reply_markup=ikb)
 
 @dp.message_handler(commands=['links'])
-async def get_useful_links(message: types.Message):
+async def get_useful_links_command(message: types.Message):
     await message.answer(text='Полезные ссылки',
                          reply_markup=ikb_links)
 
