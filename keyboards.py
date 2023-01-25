@@ -1,3 +1,5 @@
+from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
+
 kb = ReplyKeyboardMarkup(resize_keyboard=True)
 kb.add(KeyboardButton('/help')).add(KeyboardButton('/start')
                                     ).add(KeyboardButton('/contact')).add(KeyboardButton('/links'))

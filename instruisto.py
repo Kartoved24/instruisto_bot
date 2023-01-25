@@ -1,6 +1,6 @@
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 from config import TOKEN_API
+from keyboards import *
 
 HELP_COMMAND = """Привет, эсперантист! Я бот-преподаватель языка <strong>Эсперанто</strong>. Я помогу тебе выучить этот прекрасный язык, расскажу много интересного и полезного об Эсперанто. Ознакомься с моими командами ниже:
 
@@ -11,21 +11,6 @@ HELP_COMMAND = """Привет, эсперантист! Я бот-препода
 
 bot = Bot(TOKEN_API)
 dp = Dispatcher(bot)
-
-kb = ReplyKeyboardMarkup(resize_keyboard=True)
-kb.add(KeyboardButton('/help')).add(KeyboardButton('/start')).add(KeyboardButton('/contact')).add(KeyboardButton('/links'))
-
-ikb = InlineKeyboardMarkup(row_width=2)
-ikb1 = InlineKeyboardButton(text='Связаться с разработчиком',
-                            url='https://t.me/kartoved')
-ikb.add(ikb1)
-
-ikb_links = InlineKeyboardMarkup(row_width=1)
-dictionary_button = InlineKeyboardButton(text='Словарь Кондратьева',
-                            url='rueo.ru')
-chat_button = InlineKeyboardButton(text='Чат эсперантистов в Telegram',
-                            url='https://t.me/Esperantujoo')
-ikb_links.add(dictionary_button, chat_button)
 
 
 @dp.message_handler(commands=['start', 'help'])
