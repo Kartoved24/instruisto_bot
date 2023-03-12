@@ -15,3 +15,10 @@ dictionary_button = InlineKeyboardButton(text='Словарь Кондратье
 chat_button = InlineKeyboardButton(text='Чат эсперантистов в Telegram',
                                    url='https://t.me/Esperantujoo')
 ikb_links.add(dictionary_button, chat_button)
+
+ikb_guess = InlineKeyboardMarkup(row_width=2)
+remember_btn = InlineKeyboardButton(text='Помню',
+                                    callback_data='remember',)
+forget_btn = InlineKeyboardButton(text='Забыл',
+                                  callback_data='forget',)
+ikb_guess.add(remember_btn, forget_btn)
